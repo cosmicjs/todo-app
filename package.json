@@ -1,0 +1,21 @@
+{
+  "name": "boilerplate",
+  "version": "1.0.0",
+  "description": "A simple boiler plate code started with express and sequelize set up",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "nodemon": "^1.11.0",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^3.30.4",
+    "volleyball": "^1.4.1",
+    "webpack": "^2.3.3"
+  }
+}
