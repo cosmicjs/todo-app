@@ -1,26 +1,28 @@
-/////////////////ACTIONS/////////////////////
+import axios from "axios";
+
+/////////////////CONSTANTS/////////////////////
 
 
-const SWITCH_ACTION = "SWITCH_ACTION";
+const GET_ALL_TASKS = "GET_ALL_TASKS";
 
 
-/////////////////DISPATCHERS//////////////
+/////////////////ACTIONS//////////////
 
-export const switchAction = (param) => ({type: SWITCH_ACTION, payload: param});
+const getTasks = (tasks) => ({type: GET_ALL_TASKS, tasks});
 
 
 /////////////////REDUCER/////////////////////
 
 //initiate your starting state
 let initial = {
-  start: true
+  tasks: []
 };
 
 const reducer = (state = initial, action) => {
 
-  switch(action.type){
-    case SWITCH_ACTION:
-      return Object.assign({}, state, action.payload);
+  switch (action.type) {
+    case GET_ALL_TASKS:
+      return Object.assign({}, state, {tasks: action.tasks});
     default:
       return state;
   }
@@ -30,9 +32,17 @@ const reducer = (state = initial, action) => {
 export default reducer;
 
 
-///////////////DISPATCHER FUNCTIONS///////////////////
+/////////////// ACTION DISPATCHER FUNCTIONS///////////////////
 
-
-//write yo dispatchers/async dispatchers here
-
-
+export const getAllTasks = () => dispatch => {
+  axios.get("https://api.cosmicjs.com/v1/react-redux-node-todo-app/object-type/tasks")
+    .then((response) => {
+      return response.data;
+    })
+    .then((tasks) => {
+      dispatch(getTasks(tasks))
+    })
+    .catch((err) => {
+      console.error.bind(err);
+    })
+};
