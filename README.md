@@ -1,4 +1,3 @@
-# React-Sequelize-Express-Simple-Starter
-A simple starter repo for apps that are going to be built using react/redux/express/sequelize
-
-Just enter npm start/yarn start to start the server!
+# Cosmic To-Do App (React/Redux and Node)
+A simple to-do application that consumes the Cosmic API.
+Built using React, Redux, and Node
