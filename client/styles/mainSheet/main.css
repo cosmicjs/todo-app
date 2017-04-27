@@ -3,3 +3,14 @@ h1 {
 
 h2 {
   color: blue; }
+#header input {
+  color: #4696e5 !important;
+}
+@media screen and (max-width: 480px) and (orientation: portrait) {
+  input[type="submit"], input[type="reset"], input[type="button"], button, .button {
+    padding-top: 0;
+    padding-right: 1.75em;
+    padding-bottom: 0;
+    padding-left: 1.75em;
+  }
+}

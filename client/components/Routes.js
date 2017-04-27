@@ -9,7 +9,7 @@ const Routes = ({tasks, getAllTasks}) => {
   return (
     <Router history={browserHistory}>
         <Route path="/" component={Home} onEnter={getAllTasks}>
-          <Route path="/home" component={Home}/>
+          <Route path="/home" component={Home} onEnter={getAllTasks}/>
         </Route>
     </Router>
   )

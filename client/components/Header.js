@@ -1,23 +1,31 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import Task from './Task';
+import { postNewTask } from '../redux/reducers/reducer';
 
 const Header = (props) => {
-  console.log("INSIDE HEADER", props);
   return (
-    <header id="header" style={{marginTop: "62px"}}>
-      <div className="content">
-        <h1><a href="#">All My To-Do's</a></h1>
-        <ul className="actions">
-          {
-            props.Tasks.objects && props.Tasks.objects.map((task) => {
-              return (
-                <li><a href="#" className="button special"><input type="checkbox"/>{task.title}</a></li>
-              )
-            })
-          }
-        </ul>
+    <header id="header">
+      <div className="content container text-center">
+        <h1>To-Do App!</h1>
+        <form onSubmit={evt => {
+          console.log("FUCKING SUBMIT", evt.target.taskName.value);
+          evt.preventDefault();
+          props.postNewTask(evt.target.taskName.value);
+          evt.target.taskName.value = "";
+        }
+        }>
+          <div className="form-group">
+            <label for="exampleInputEmail1">Add New To-Do</label>
+            <input className="form-control" name="taskName" placeholder="Enter new task" />
+          </div>
+          <button type="submit">Add</button>
+        </form>
       </div>
     </header>
   );
 };
 
-export default Header;
+
+const mapDispatch = {postNewTask};
+export default connect(null, mapDispatch)(Header);

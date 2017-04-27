@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import Header from './Header';
+import Section from './Section';
 import Footer from './Footer';
-import NavBar from './NavBar';
 
 class Home extends Component {
   constructor(props){
@@ -12,8 +12,8 @@ class Home extends Component {
     console.log("NEW PROPS", this.props.tasks);
     return (
       <div>
-        <NavBar/>
-        <Header Tasks={this.props.tasks}/>
+        <Header />
+        <Section />
         <Footer/>
       </div>
     )
