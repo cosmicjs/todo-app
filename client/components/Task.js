@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { putChangeStatus, deleteTask } from '../redux/reducers/reducer';
 
 const Task = (props) => {
-  console.log("props for task", props.isComplete);
   return (
     <div className="container">
       <div className="row">

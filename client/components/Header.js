@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Task from './Task';
 import { postNewTask } from '../redux/reducers/reducer';
 
 const Header = (props) => {

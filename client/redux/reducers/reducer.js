@@ -28,7 +28,6 @@ const reducer = (state = initial, action) => {
 
   switch (action.type) {
     case GET_ALL_TASKS:
-      console.log("THE GOTTEN TASKS", action.tasks);
       return Object.assign({}, state, {tasks: action.tasks.objects});
     case POST_TASK:
       let updatedTasks = [action.task].concat(state.tasks);
@@ -80,7 +79,6 @@ export const postNewTask = (task) => dispatch => {
       }
     ]})
     .then((response) => {
-    console.log("RESPONSE", response);
       return response.data;
     })
     .then((task) => {
@@ -103,7 +101,6 @@ export const putChangeStatus = (task, bool) => (dispatch) => {
       }
     ]})
     .then((response) => {
-      console.log("RESPONSE", response);
       return response.data;
     })
     .then((task) => {
@@ -118,7 +115,6 @@ export const deleteTask = (slug) => (dispatch) => {
   dispatch(taskDelete(slug));
   axios.delete(`https://api.cosmicjs.com/v1/${config.bucket.slug}/${slug}`)
     .then((response) => {
-      console.log("RESPONSE", response);
     })
     .catch((err) => {
       console.error.bind(err);

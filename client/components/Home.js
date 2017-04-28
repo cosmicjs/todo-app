@@ -9,7 +9,6 @@ class Home extends Component {
     super(props);
   }
   render() {
-    console.log("NEW PROPS", this.props.tasks);
     return (
       <div>
         <Header />

@@ -1,5 +1,6 @@
 var path = require('path');
 var LiveReloadPlugin = require('webpack-livereload-plugin');
+var webpack = require('webpack');
 
 module.exports = {
   entry: './client/index.js',
@@ -30,6 +31,10 @@ module.exports = {
       }]
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env.COSMIC_BUCKET': JSON.stringify(process.env.COSMIC_BUCKET),
+      'process.env.APP_URL': JSON.stringify(process.env.APP_URL)
+    }),
     new LiveReloadPlugin({appendScriptTag: true})
   ]
 };

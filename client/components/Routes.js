@@ -5,7 +5,6 @@ import Home from './Home';
 import { getAllTasks } from '../redux/reducers/reducer';
 
 const Routes = ({tasks, getAllTasks}) => {
-  console.log("TASKS", tasks);
   return (
     <Router history={browserHistory}>
         <Route path="/" component={Home} onEnter={getAllTasks}>
