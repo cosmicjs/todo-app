@@ -1,4 +1,5 @@
 import axios from "axios";
+import config from '../../config';
 /////////////////CONSTANTS/////////////////////
 
 
@@ -30,8 +31,7 @@ const reducer = (state = initial, action) => {
       console.log("THE GOTTEN TASKS", action.tasks);
       return Object.assign({}, state, {tasks: action.tasks.objects});
     case POST_TASK:
-      console.log("TASKSTATE", state.tasks);
-      let updatedTasks = state.tasks.concat([action.task]);
+      let updatedTasks = [action.task].concat(state.tasks);
       return Object.assign({}, state, {tasks: updatedTasks});
     case CHANGE_STATUS:
       let newArr = state.tasks.map((task) => {
@@ -56,7 +56,7 @@ export default reducer;
 /////////////// ACTION DISPATCHER FUNCTIONS///////////////////
 
 export const getAllTasks = () => dispatch => {
-  axios.get("https://api.cosmicjs.com/v1/react-redux-node-todo-app/object-type/tasks")
+  axios.get(`https://api.cosmicjs.com/v1/${config.bucket.slug}/object-type/tasks`)
     .then((response) => {
       return response.data;
     })
@@ -69,7 +69,8 @@ export const getAllTasks = () => dispatch => {
 };
 
 export const postNewTask = (task) => dispatch => {
-  axios.post("https://api.cosmicjs.com/v1/react-redux-node-todo-app/add-object", {type_slug: "tasks", title: task, content: "New Task",
+  dispatch(addTask({title: task, metafields: [{value: false}], slug: formatSlug(task)}));
+  axios.post(`https://api.cosmicjs.com/v1/${config.bucket.slug}/add-object`, {type_slug: "tasks", title: task, content: "New Task",
     metafields: [
       {
         title: "Is Complete",
@@ -83,15 +84,16 @@ export const postNewTask = (task) => dispatch => {
       return response.data;
     })
     .then((task) => {
-      dispatch(addTask(task.object));
+      // dispatch(addTask(task.object));
     })
     .catch((err) => {
       console.error.bind(err);
     })
 };
 
-export const putChangeStatus = (slug, bool) => (dispatch) => {
-  axios.put("https://api.cosmicjs.com/v1/react-redux-node-todo-app/edit-object", {slug,
+export const putChangeStatus = (task, bool) => (dispatch) => {
+  dispatch(changeStatus(task));
+  axios.put(`https://api.cosmicjs.com/v1/${config.bucket.slug}/edit-object`, {slug: task.slug,
     metafields: [
       {
         title: "Is Complete",
@@ -105,7 +107,7 @@ export const putChangeStatus = (slug, bool) => (dispatch) => {
       return response.data;
     })
     .then((task) => {
-      dispatch(changeStatus(task.object));
+      // dispatch(changeStatus(task.object));
     })
     .catch((err) => {
       console.error.bind(err);
@@ -114,11 +116,16 @@ export const putChangeStatus = (slug, bool) => (dispatch) => {
 
 export const deleteTask = (slug) => (dispatch) => {
   dispatch(taskDelete(slug));
-  axios.delete(`https://api.cosmicjs.com/v1/react-redux-node-todo-app/${slug}`)
+  axios.delete(`https://api.cosmicjs.com/v1/${config.bucket.slug}/${slug}`)
     .then((response) => {
       console.log("RESPONSE", response);
     })
     .catch((err) => {
       console.error.bind(err);
     })
+};
+
+const formatSlug = (title) => {
+  let lower = title.toLowerCase();
+  return lower.split(" ").join("-");
 };

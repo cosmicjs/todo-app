@@ -3,7 +3,14 @@ import React from 'react';
 const Footer = (props) => {
   return (
     <footer id="footer">
-      <p className="copyright">&copy; Untitled. Credits: <a href="http://html5up.net">HTML5 UP</a></p>
+      <div className="row">
+        <div className="col-xs-12 text-center">
+          <a href="https://cosmicjs.com" style={{textDecoration: "none", borderBottom: "none"}}>
+            <img src="https://cosmicjs.com/images/logo.svg"/>
+            <p>Proudly powered by CosmicJs</p>
+          </a>
+        </div>
+      </div>
     </footer>
   );
 };

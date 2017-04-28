@@ -9,7 +9,7 @@ class Section extends Component {
 
   render() {
     return (
-      <section id="one" className="wrapper style2 special">
+      <section id="one" className="wrapper style2 special flow">
         <header className="major">
           <h2>Let's get some work done!</h2>
         </header>
@@ -17,7 +17,7 @@ class Section extends Component {
           this.props.tasks && this.props.tasks.map((task) => {
             console.log("TASKSKSKS", task);
             return (
-              <Task key={task._id} Slug={task.slug} isComplete={task.metafields[0].value} Name={task.title}/>
+              <Task key={task._id} Obj={task} isComplete={task.metafields[0].value} Name={task.title}/>
             )
           })
         }

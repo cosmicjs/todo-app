@@ -3646,8 +3646,8 @@
 		background-position: top left, center center;
 		background-attachment: fixed, fixed;
 		background-size: auto, cover;
-		height: 100vh;
-		min-height: 35em;
+		height: 50vh;
+		min-height: 25em;
 	}
 
 		#header input[type="submit"],

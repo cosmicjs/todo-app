@@ -9,7 +9,6 @@ const Header = (props) => {
       <div className="content container text-center">
         <h1>To-Do App!</h1>
         <form onSubmit={evt => {
-          console.log("FUCKING SUBMIT", evt.target.taskName.value);
           evt.preventDefault();
           props.postNewTask(evt.target.taskName.value);
           evt.target.taskName.value = "";
@@ -17,7 +16,7 @@ const Header = (props) => {
         }>
           <div className="form-group">
             <label for="exampleInputEmail1">Add New To-Do</label>
-            <input className="form-control" name="taskName" placeholder="Enter new task" />
+            <input className="form-control input-lg" name="taskName" placeholder="Enter new task" />
           </div>
           <button type="submit">Add</button>
         </form>

@@ -9,8 +9,8 @@ const Task = (props) => {
       <div className="row">
         <div className="btn-group" role="group" aria-label="Basic example">
           <button type="button" onClick={() => {
-            props.putChangeStatus(props.Slug, props.isComplete)}} className="btn">{props.isComplete ? "Undo" : "Complete" }</button>
-          <button type="button" onClick={() => props.deleteTask(props.Slug)} className="btn">Delete</button>
+            props.putChangeStatus(props.Obj, props.isComplete)}} className="btn">{props.isComplete ? "Undo" : "Complete" }</button>
+          <button type="button" onClick={() => props.deleteTask(props.Obj.slug)} className="btn">Delete</button>
         </div>
         <h3 style={{textDecoration: props.isComplete ? "line-through" : "none"}}>{props.Name}</h3>
       </div>
