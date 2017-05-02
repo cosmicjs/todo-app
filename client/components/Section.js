@@ -15,6 +15,8 @@ class Section extends Component {
         </header>
         {
           this.props.tasks && this.props.tasks.map((task) => {
+            if (!task)
+              return <div></div>
             return (
               <Task key={task._id} Obj={task} isComplete={task.metafields[0].value} Name={task.title}/>
             )
