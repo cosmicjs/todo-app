@@ -55,7 +55,7 @@ Now, in your ```package.json```, copy and paste the code below and then run npm 
 1. We're going to use the axios library to handle our requests to our Cosmic JS bucket.
 2. We're installing react and react-dom to build our react components.
 3. We are going to use redux, react-redux, redux-logger, and redux-thunk to help us implement what is called the [Flux architecture](https://facebook.github.io/flux/). 
-4. The only thing worth mentioning in the dev dependencies is webpack and volleyball. Wepack will help us bundle all of our react and redux files into one large "bundle" file that will be used in our index.html. Volleyball is a cool little library that allows us to see in our console incoming and outgoing HTTP requests.
+4. The only thing worth mentioning in the dev dependencies is webpack and volleyball. Webpack will help us bundle all of our react and redux files into one large "bundle" file that will be used in our index.html. Volleyball is a cool little library that allows us to see in our console incoming and outgoing HTTP requests.
 
 ## Building or app:
 Now we're going to build out our file structure a bit more so that we can organize our react components and redux files. This is what our cool-cosmic-todo-app directory should look like:
