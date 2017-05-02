@@ -4,12 +4,10 @@ import {connect} from 'react-redux';
 import Home from './Home';
 import { getAllTasks } from '../redux/reducers/reducer';
 
-const Routes = ({tasks, getAllTasks}) => {
+const Routes = ({getAllTasks}) => {
   return (
     <Router history={browserHistory}>
-        <Route path="/" component={Home} onEnter={getAllTasks}>
-          <Route path="/home" component={Home} onEnter={getAllTasks}/>
-        </Route>
+        <Route path="/" component={Home} onEnter={getAllTasks} />
     </Router>
   )
 };

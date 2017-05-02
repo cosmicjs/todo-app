@@ -122,6 +122,5 @@ export const deleteTask = (slug) => (dispatch) => {
 };
 
 const formatSlug = (title) => {
-  let lower = title.toLowerCase();
-  return lower.split(" ").join("-");
+  return title.toLowerCase().split(" ").join("-");
 };

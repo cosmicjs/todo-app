@@ -3,13 +3,10 @@ const app = express();
 const path = require('path');
 const volleyball = require('volleyball');
 const bodyParser = require('body-parser');
-// const db = require('./db');
 
 app.use(volleyball);
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
-
-app.use('/api', require('./apiRoutes'));
 
 //serve up static files
 app.use(express.static(path.resolve(__dirname, '..', 'client')));
