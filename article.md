@@ -1,15 +1,15 @@
 # How to Build a ToDo App Using React, Redux, and Webpack
-### In this tutorial I'm going to show you how to create a simple “ToDo” app using React, Redux, a little bit of Node, and Cosmic JS.  For the sake of understanding how to consume Restful API’s, this tutorial will show how to make simple AJAX requests to the Cosmic JS API in order to retrieve, update, and delete data in our Cosmic JS buckets. Let's get started.
+In this tutorial I'm going to show you how to create a simple “ToDo” app using React, Redux, a little bit of Node, and Cosmic JS.  For the sake of understanding how to consume Restful API’s, this tutorial will show how to make simple AJAX requests to the Cosmic JS API in order to retrieve, update, and delete data in our Cosmic JS buckets. Let's get started.
 
 ## Getting Started:
-### First, let’s make a new directory to build our project in and lets also make a package.json file.
+First, let’s make a new directory to build our project in and lets also make a package.json file.
 ```
 mkdir cool-cosmic-todo-app
 ```
 ```
 cool-cosmic-todo-app$ touch package.json
 ```
-### Now, in your ```package.json```, copy and paste the code below and then run npm install or yarn (if you're a super cool yarn user):
+Now, in your ```package.json```, copy and paste the code below and then run npm install or yarn (if you're a super cool yarn user):
 
 ```json
 //cool-cosmic-todo-app/package.json
@@ -52,13 +52,13 @@ cool-cosmic-todo-app$ touch package.json
 }
 ```
 ## What we're installing and why:
-### 1. We're going to use the axios library to handle our requests to our Cosmic JS bucket.
-### 2. We're installing react and react-dom to build our react components.
-### 3. We are going to use redux, react-redux, redux-logger, and redux-thunk to help us implement what is called the [Flux architecture](https://facebook.github.io/flux/). 
-### 4. The only thing worth mentioning in the dev dependencies is webpack and volleyball. Wepack will help us bundle all of our react and redux files into one large "bundle" file that will be used in our index.html. Volleyball is a cool little library that allows us to see in our console incoming and outgoing HTTP requests.
+1. We're going to use the axios library to handle our requests to our Cosmic JS bucket.
+2. We're installing react and react-dom to build our react components.
+3. We are going to use redux, react-redux, redux-logger, and redux-thunk to help us implement what is called the [Flux architecture](https://facebook.github.io/flux/). 
+4. The only thing worth mentioning in the dev dependencies is webpack and volleyball. Wepack will help us bundle all of our react and redux files into one large "bundle" file that will be used in our index.html. Volleyball is a cool little library that allows us to see in our console incoming and outgoing HTTP requests.
 
 ## Building or app:
-### Now we're going to build out our file structure a bit more so that we can organize our react components and redux files. This is what our cool-cosmic-todo-app directory should look like:
+Now we're going to build out our file structure a bit more so that we can organize our react components and redux files. This is what our cool-cosmic-todo-app directory should look like:
 ```
 cool-cosmic-todo-app
 |----client
@@ -76,7 +76,7 @@ cool-cosmic-todo-app
 |----webpack.config.js
 |----package.json
 ```
-### Now we we will set up our index.html in our client directory. Copy and paste the following code into your index.html file:
+Now we we will set up our index.html in our client directory. Copy and paste the following code into your index.html file:
 ```html
 <!DOCTYPE html>
 <html>
@@ -98,8 +98,8 @@ cool-cosmic-todo-app
 </body>
 </html>
 ```
-### Here, we are going to target our "root" div to place our react components in later. The ```bundle.js``` file located in our dist directory is what our webpack.config file will spit out after bundling all of our react components
-### Now, set up our webpack.config file to bundle all of our react files and export that bundle file to our dist directory. Copy the following code into your ```webpack.config.js``` file:
+Here, we are going to target our "root" div to place our react components in later. The ```bundle.js``` file located in our dist directory is what our webpack.config file will spit out after bundling all of our react components
+Now, set up our webpack.config file to bundle all of our react files and export that bundle file to our dist directory. Copy the following code into your ```webpack.config.js``` file:
 ```js
 let path = require('path');
 let LiveReloadPlugin = require('webpack-livereload-plugin');
@@ -141,8 +141,8 @@ module.exports = {
   ]
 };
 ```
-### Here, we are simply telling webpack to output a ```bundle.js``` file into our dist folder with all of our react components bundled in there as well. The babel-loader is simply transpiling JavaScript files using babel and webpack. The live reload plugin allows us to make changes to our files and automatically have webpack watch and "re-bundle" with our updated changes.
-### Next, we're going to us a little bit of node with express to serve up our ```index.html``` file as well as our ```bundle.js``` file. Realistically, we aren't really making requests to our own node backend, but it's good to use node as a method to serve us static files. Copy and paste the code below into our ```index.js``` file located in our server directory.
+Here, we are simply telling webpack to output a ```bundle.js``` file into our dist folder with all of our react components bundled in there as well. The babel-loader is simply transpiling JavaScript files using babel and webpack. The live reload plugin allows us to make changes to our files and automatically have webpack watch and "re-bundle" with our updated changes.
+Next, we're going to us a little bit of node with express to serve up our ```index.html``` file as well as our ```bundle.js``` file. Realistically, we aren't really making requests to our own node backend, but it's good to use node as a method to serve us static files. Copy and paste the code below into our ```index.js``` file located in our server directory.
 ```js
 const express = require('express');
 const app = express();
@@ -173,8 +173,8 @@ app.listen(process.env.PORT || 3000, function () {
   console.log("Rockin' out on port 3000 homie");
 });
 ```
-### Here, we are simply telling our server to serve up static files out of our node_modules and client directories. The '*' route is basically telling express to serve up our index.html on any route requested within our app. Finally, we are telling express to listen on port 3000. Feel free to try it out! Run npm start or yarn start and see our "Rockin' out on port 3000 homie" message log put to the console!
-### Next, let's set up our redux ```store.js``` file, located in our client/redux folder. Copy and paste the following code into the ```store.js``` file located in our client/redux folder:
+Here, we are simply telling our server to serve up static files out of our node_modules and client directories. The '*' route is basically telling express to serve up our index.html on any route requested within our app. Finally, we are telling express to listen on port 3000. Feel free to try it out! Run npm start or yarn start and see our "Rockin' out on port 3000 homie" message log put to the console!
+Next, let's set up our redux ```store.js``` file, located in our client/redux folder. Copy and paste the following code into the ```store.js``` file located in our client/redux folder:
 ```js
 import { createStore, applyMiddleware } from 'redux';
 import reducer from './reducer';
@@ -192,10 +192,10 @@ const store = createStore(
 export default store;
 ```
 ### What's going on here:
-### 1. We are setting up our redux "store" so that we can pass data down through "props" into whatever components we want (I am going to assume you have some working knowledge of how the flux architecture functions, if you do not understand this it is OK, just check the flux architecture link above).
-### 2. We are using the redux-thunk middleware to handle all of our asynchronous calls to our Cosmic JS API. This middleware is used whenever we dispatch a function instead of an action.
-### 3. We are also using "createlogger" middleware to visually see every logged action that we dispatch.
-### Next, we are going to set up the ```index.js``` file, located in our client directory. Copy and paste the following code:
+1. We are setting up our redux "store" so that we can pass data down through "props" into whatever components we want (I am going to assume you have some working knowledge of how the flux architecture functions, if you do not understand this it is OK, just check the flux architecture link above).
+2. We are using the redux-thunk middleware to handle all of our asynchronous calls to our Cosmic JS API. This middleware is used whenever we dispatch a function instead of an action.
+3. We are also using "createlogger" middleware to visually see every logged action that we dispatch.
+Next, we are going to set up the ```index.js``` file, located in our client directory. Copy and paste the following code:
 ```js
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -211,9 +211,9 @@ ReactDOM.render(
 );
 ```
 ### What's going on here:
-### 1. We are telling ReactDOM to target our "root" div from our ```index.html``` file and pop in our ```<Home/>``` react component (which we will build out in our next step).
-### 2. Our ```<Home/>``` react component is being served up data from our store through that ```<Provider store={store}>``` tag. It is "providing" its children with data (hence, why it's called "Provider").
-### Next, we will build out our ```Home``` component. In our ```Home.js``` file located in out client/components directory, copy and paste the following code:
+1. We are telling ReactDOM to target our "root" div from our ```index.html``` file and pop in our ```<Home/>``` react component (which we will build out in our next step).
+2. Our ```<Home/>``` react component is being served up data from our store through that ```<Provider store={store}>``` tag. It is "providing" its children with data (hence, why it's called "Provider").
+Next, we will build out our ```Home``` component. In our ```Home.js``` file located in out client/components directory, copy and paste the following code:
 ```js
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
@@ -275,12 +275,12 @@ const mapDispatch = {getAllTasks, postNewTask};
 export default connect(mapState, mapDispatch)(Home);
 ```
 ### What's going on (a lot!):
-### 1. We are creating a react component and fetching all of our data when our ```Home``` component mounts (which will be tasks form our Cosmic JS bucket).
-### 2. We are rendering "HTML" to our virtual DOM.
-### 3. We are creating a form that will dispatch a function (that will go through our redux-thunk middleware) that adds tasks to our list of tasks to do whenever our users click the submit ```<button>```.
-### 4. We are doing a hacky check so that our app does not break by doing what is called a "short-circuit". We are first checking if we have gotten back "tasks" from our asynchronous call to our Cosmic JS bucket and if we do then we are going to map over each of them and render a ```<Task />``` component (which we will build in the nex step).
-### 5. Finally, we are wrapping our ```Home``` component inside of the connect function that the react-redux library gives us. We are getting the ```{tasks}``` from our store as well as our ```{getAllTasks, postNewTask}``` functions from our store.
-### Next, we are going to build out our ```<Task>``` component to render every task that we are getting from our store. In our ```Task.js``` file, located in our client/components directory, copy and paste the following code:
+1. We are creating a react component and fetching all of our data when our ```Home``` component mounts (which will be tasks form our Cosmic JS bucket).
+2. We are rendering "HTML" to our virtual DOM.
+3. We are creating a form that will dispatch a function (that will go through our redux-thunk middleware) that adds tasks to our list of tasks to do whenever our users click the submit ```<button>```.
+4. We are doing a hacky check so that our app does not break by doing what is called a "short-circuit". We are first checking if we have gotten back "tasks" from our asynchronous call to our Cosmic JS bucket and if we do then we are going to map over each of them and render a ```<Task />``` component (which we will build in the nex step).
+5. Finally, we are wrapping our ```Home``` component inside of the connect function that the react-redux library gives us. We are getting the ```{tasks}``` from our store as well as our ```{getAllTasks, postNewTask}``` functions from our store.
+Next, we are going to build out our ```<Task>``` component to render every task that we are getting from our store. In our ```Task.js``` file, located in our client/components directory, copy and paste the following code:
 ```js
 import React from 'react';
 import { connect } from 'react-redux';
@@ -303,10 +303,10 @@ const mapDispatch = {putChangeStatus, deleteTask};
 export default connect(null, mapDispatch)(Task);
 ```
 ### What's going on:
-### 1. We are creating what is called a "dumb" react component and, again, wrapping it in our connect function.
-### 2. We are pulling in ```putChangeStatus``` and ```deleteTask``` from our reducer (which we will finally make in te next step) and hookingit up to our store.
-### 3. We are hooking up our "Complete" and "Delete" buttons to dispatch asynchronous functions ```onClick``` so that we actually update our Cosmic JS bucket as well.
-### Next, we will FINALLY make our reducer and set up all of our asynchronous "redux-thunk" functions. In our ```reducer.js``` file, located in our client/redux directory, copy and paste the following code:
+1. We are creating what is called a "dumb" react component and, again, wrapping it in our connect function.
+2. We are pulling in ```putChangeStatus``` and ```deleteTask``` from our reducer (which we will finally make in te next step) and hookingit up to our store.
+3. We are hooking up our "Complete" and "Delete" buttons to dispatch asynchronous functions ```onClick``` so that we actually update our Cosmic JS bucket as well.
+Next, we will FINALLY make our reducer and set up all of our asynchronous "redux-thunk" functions. In our ```reducer.js``` file, located in our client/redux directory, copy and paste the following code:
 ```js
 import axios from "axios";
 /////////////////CONSTANTS/////////////////////
@@ -421,14 +421,14 @@ const formatSlug = (title) => {
 };
 ```
 ### What is going on?!
-### Side note -> I personally like to store all of my constants, actions, and action dispatcher functions inside of one file for every reducer that I have just so I'm not contantly jumping from file to file. It's totally common  and cool to break these up into seperate files.
-### 1. We are puling in axios (our library that will be making the HTTP requests for us).
-### 2. We are defining our constants.
-### 3. We are setting up our actions to dispatch.
-### 4. We define our reducer function that our store uses and we are starting it out initially with an object that has a ```tasks``` key with an empty array as a value (this array will be filled with task objects retrieved from our Cosmic JS bucket).
-### 5. We define our action dispatcher functions that make our axios requests to the Cosmic JS API (specifically to our personal bucket).
-### And we are done! Run ```npm run build``` or ```yarn build``` and in a different tab run ```npm start``` or ```yarn start``` and see what we made!
-### If you want to see my implementation of this (unnecessarily using react-router) to get a glimpse of how all this works together check out my [github repo](https://github.com/ryskiz/Cosmic-ToDo-App)
+Side note -> I personally like to store all of my constants, actions, and action dispatcher functions inside of one file for every reducer that I have just so I'm not contantly jumping from file to file. It's totally common  and cool to break these up into seperate files.
+1. We are puling in axios (our library that will be making the HTTP requests for us).
+2. We are defining our constants.
+3. We are setting up our actions to dispatch.
+4. We define our reducer function that our store uses and we are starting it out initially with an object that has a ```tasks``` key with an empty array as a value (this array will be filled with task objects retrieved from our Cosmic JS bucket).
+5. We define our action dispatcher functions that make our axios requests to the Cosmic JS API (specifically to our personal bucket).
+And we are done! Run ```npm run build``` or ```yarn build``` and in a different tab run ```npm start``` or ```yarn start``` and see what we made!
+If you want to see my implementation of this (unnecessarily using react-router) to get a glimpse of how all this works together check out my [github repo](https://github.com/ryskiz/Cosmic-ToDo-App)
 
 ## Conclusion:
-### We were able to consume the Cosmic JS API with our actions and dispatcher functions. If you're a little iffy on how how all the files work in conjunction with our store check out [this gif](https://camo.githubusercontent.com/9de527b9432cc9244dc600875b46b43311918b59/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6d656469612d702e736c69642e65732f75706c6f6164732f3336343831322f696d616765732f323438343739302f415243482d5265647578322d657874656e6465642d7265616c2d6465636c657261746976652e676966) to get a better picture of how redux is passing data around the app. I hope you enjoyed this tutorial as much as I did, if you have any questions reach out to us on Twitter and join our community on Slack.
+We were able to consume the Cosmic JS API with our actions and dispatcher functions. If you're a little iffy on how how all the files work in conjunction with our store check out [this gif](https://camo.githubusercontent.com/9de527b9432cc9244dc600875b46b43311918b59/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6d656469612d702e736c69642e65732f75706c6f6164732f3336343831322f696d616765732f323438343739302f415243482d5265647578322d657874656e6465642d7265616c2d6465636c657261746976652e676966) to get a better picture of how redux is passing data around the app. I hope you enjoyed this tutorial as much as I did, if you have any questions reach out to us on Twitter and join our community on Slack.
