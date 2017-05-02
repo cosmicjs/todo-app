@@ -427,6 +427,7 @@ const formatSlug = (title) => {
 ###3. We are setting up our actions to dispatch.
 ###4. We define our reducer function that our store uses and we are starting it out initially with an object that has a ```tasks``` key with an empty array as a value (this array will be filled with task objects retrieved from our Cosmic JS bucket).
 ###5. We define our action dispatcher functions that make our axios requests to the Cosmic JS API (specifically to our personal bucket).
+###And we are done! Run ```npm run build``` or ```yarn build``` and in a different tab run ```npm start``` or ```yarn start``` and see what we made!
 ### If you want to see my implementation of this (unnecessarily using react-router) to get a glimpse of how all this works together check out my [github repo](https://github.com/ryskiz/Cosmic-ToDo-App)
 
 ##Conclusion:
