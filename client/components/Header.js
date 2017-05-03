@@ -15,7 +15,7 @@ const Header = (props) => {
         }>
           <div className="form-group">
             <label for="exampleInputEmail1">Add New To-Do</label>
-            <input className="form-control input-lg" name="taskName" placeholder="Enter new task" />
+            <input autoComplete="off" className="form-control input-lg" name="taskName" placeholder="Enter new task" />
           </div>
           <button type="submit">Add</button>
         </form>
