@@ -3,7 +3,7 @@ const app = express();
 const path = require('path');
 const volleyball = require('volleyball');
 const bodyParser = require('body-parser');
-
+const PORT = process.env.PORT || 3000
 app.use(volleyball);
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
@@ -33,6 +33,6 @@ app.get('*', function (request, response) {
   response.sendFile(path.resolve(__dirname, '..', 'client', 'index.html'))
 });
 
-app.listen(process.env.PORT || 3000, function () {
-  console.log("Rockin out on port 3000 homie");
+app.listen(PORT, function () {
+  console.log("Rockin out on port " + PORT + " homie");
 });
