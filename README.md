@@ -1,8 +1,8 @@
-# To Do App (React/Redux and Node)
-A simple to do application that consumes the [Cosmic JS API](https://cosmicjs.com).  Built using React, Redux, and Node.js.
+# Todo App (React/Redux and Node)
+A simple todo application that consumes the [Cosmic JS API](https://cosmicjs.com).  Built using React, Redux, and Node.js.
 
 ## Getting Started
-1. Go to [Cosmic JS](https://cosmicjs.com) and create a new Bucket to store your to dos.
+1. Go to [Cosmic JS](https://cosmicjs.com) and create a new Bucket to store your todos.
 2. Download the app:
 ```
 git clone https://github.com/cosmicjs/todo-app
@@ -26,4 +26,4 @@ export default {
 ```
 yarn start
 ```
-3. Go to http://localhost:3000 to manage your To Dos.
+3. Go to http://localhost:3000 to manage your Todos.
