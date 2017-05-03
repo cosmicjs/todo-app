@@ -1,5 +1,5 @@
 # To Do App (React/Redux and Node)
-A simple to do application that consumes the [Cosmic JS API](https://cosmicjs.com).  Built using React, Redux, and Node.
+A simple to do application that consumes the [Cosmic JS API](https://cosmicjs.com).  Built using React, Redux, and Node.js.
 
 ## Getting Started
 1. Go to [Cosmic JS](https://cosmicjs.com) and create a new Bucket to store your to dos.
